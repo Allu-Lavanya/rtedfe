@@ -23,7 +23,7 @@ const EmotionFeedback = () => {
   const [products, setProducts] = useState([]);
 
   // Update with the Render URL
-  const backendUrl = "https://your-app-name.onrender.com"; // Replace with your Render app URL
+  const backendUrl = "https://emotion-backend-iwzy.onrender.com"; // Replace with your Render app URL
 
   useEffect(() => {
     startWebcam();
