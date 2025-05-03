@@ -22,6 +22,9 @@ const EmotionFeedback = () => {
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
 
+  // Update with the Render URL
+  const backendUrl = "https://your-app-name.onrender.com"; // Replace with your Render app URL
+
   useEffect(() => {
     startWebcam();
     fetchCategories();
@@ -79,7 +82,7 @@ const EmotionFeedback = () => {
       formData.append("image", blob, "captured.jpg");
 
       try {
-        const res = await axios.post("http://127.0.0.1:5000/detect_emotion", formData);
+        const res = await axios.post(`${backendUrl}/detect_emotion`, formData);
         const detectedEmotion = res.data.emotion;
         setEmotion(detectedEmotion);
 
@@ -104,7 +107,7 @@ const EmotionFeedback = () => {
 
   const fetchCategories = async () => {
     try {
-      const res = await axios.get("http://127.0.0.1:8080/get_categories");
+      const res = await axios.get(`${backendUrl}/get_categories`);
       setCategories(res.data.categories || []);
     } catch (err) {
       console.error("Category fetch error:", err);
@@ -113,7 +116,7 @@ const EmotionFeedback = () => {
 
   const fetchProducts = async () => {
     try {
-      const res = await axios.get("http://127.0.0.1:8080/get_products");
+      const res = await axios.get(`${backendUrl}/get_products`);
       setProducts(res.data.products || []);
     } catch (err) {
       console.error("Product fetch error:", err);
@@ -149,7 +152,7 @@ const EmotionFeedback = () => {
     }
 
     try {
-      await axios.post("http://127.0.0.1:8080/submit_emotion_feedback", formData);
+      await axios.post(`${backendUrl}/submit_emotion_feedback`, formData);
       setFeedbackSubmitted(true);
       setTimeout(() => navigate("/"), 2000);
     } catch (error) {
