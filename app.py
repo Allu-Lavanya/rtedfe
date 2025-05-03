@@ -3,6 +3,7 @@ from flask_cors import CORS
 from deepface import DeepFace
 import cv2
 import numpy as np
+import os
 
 app = Flask(__name__)
 CORS(app)  # Allow cross-origin requests from frontend
@@ -36,4 +37,7 @@ def detect_emotion():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-app.run(host="0.0.0.0", port=5000, debug=True)
+if __name__ == "__main__":
+    # Render dynamically assigns a port, so use that instead of hardcoding
+    port = int(os.environ.get("PORT", 5000))  # Default to 5000 if no PORT is found
+    app.run(host="0.0.0.0", port=port)
