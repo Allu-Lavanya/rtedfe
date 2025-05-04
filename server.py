@@ -260,3 +260,7 @@ if __name__ == "__main__":
 @app.get("/")
 def read_root():
     return {"message": "API is live!"}
+
+@app.head("/")
+async def root_head():
+    return {"message": "This is a HEAD request response"}

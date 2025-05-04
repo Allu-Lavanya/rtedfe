@@ -24,7 +24,7 @@ const EmotionFeedback = () => {
 
   // Update with the Render URL
   const backendUrl = "https://emotion-backend-iwzy.onrender.com"; // Replace with your Render app URL
-
+  const serverbackendUrl = "https://server-backend-nry1.onrender.com";
   useEffect(() => {
     startWebcam();
     fetchCategories();
@@ -152,7 +152,7 @@ const EmotionFeedback = () => {
     }
 
     try {
-      await axios.post(`${backendUrl}/submit_emotion_feedback`, formData);
+      await axios.post(`${serverbackendUrl}/submit_emotion_feedback`, formData);
       setFeedbackSubmitted(true);
       setTimeout(() => navigate("/"), 2000);
     } catch (error) {
