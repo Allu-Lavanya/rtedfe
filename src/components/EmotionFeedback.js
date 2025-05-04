@@ -107,7 +107,7 @@ const EmotionFeedback = () => {
 
   const fetchCategories = async () => {
     try {
-      const res = await axios.get(`${backendUrl}/get_categories`);
+      const res = await axios.get(`https://server-backend-nry1.onrender.com/get_categories`);
       setCategories(res.data.categories || []);
     } catch (err) {
       console.error("Category fetch error:", err);
@@ -116,7 +116,7 @@ const EmotionFeedback = () => {
 
   const fetchProducts = async () => {
     try {
-      const res = await axios.get(`${backendUrl}/get_products`);
+      const res = await axios.get(`https://server-backend-nry1.onrender.com/get_products`);
       setProducts(res.data.products || []);
     } catch (err) {
       console.error("Product fetch error:", err);
