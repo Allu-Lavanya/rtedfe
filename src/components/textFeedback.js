@@ -86,13 +86,13 @@ const TextFeedback = () => {
             <>
               {error && <p className="error-message">{error}</p>}
 
-              <label className="message">Category</label>
+              
               <select
                 className="feedback-dropdown"
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
               >
-                <option value="">-- Select Category --</option>
+                <option value="">Select Category</option>
                 {categories.map((cat, index) => (
                   <option key={index} value={cat}>
                     {cat}
@@ -100,13 +100,13 @@ const TextFeedback = () => {
                 ))}
               </select>
 
-              <label className="message">Product</label>
+              
               <select
                 className="feedback-dropdown"
                 value={product}
                 onChange={(e) => setProduct(e.target.value)}
               >
-                <option value="">-- Select Product --</option>
+                <option value="">Select Product</option>
                 {products.map((prod, index) => (
                   <option key={index} value={prod}>
                     {prod}
