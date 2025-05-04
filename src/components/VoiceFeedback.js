@@ -24,7 +24,7 @@ const VoiceFeedback = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const res = await fetch("http://127.0.0.1:8080/get_categories");
+        const res = await fetch("https://server-backend-nry1.onrender.com/get_categories");
         const data = await res.json();
         setCategories(data.categories || []);
       } catch (err) {
@@ -34,7 +34,7 @@ const VoiceFeedback = () => {
 
     const fetchProducts = async () => {
       try {
-        const res = await fetch("http://127.0.0.1:8080/get_products");
+        const res = await fetch("https://server-backend-nry1.onrender.com/get_products");
         const data = await res.json();
         setProducts(data.products || []);
       } catch (err) {
@@ -125,7 +125,7 @@ const VoiceFeedback = () => {
     }
 
     try {
-      const response = await fetch("http://127.0.0.1:8080/submit_voice_feedback", {
+      const response = await fetch("https://server-backend-nry1.onrender.com/submit_voice_feedback", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams({ text, category, product }),
