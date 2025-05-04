@@ -30,7 +30,8 @@ TWILIO_WHATSAPP_NUMBER = os.getenv("TWILIO_WHATSAPP_NUMBER")  # e.g., 'whatsapp:
 client = Client(TWILIO_SID, TWILIO_AUTH_TOKEN)
 
 # ✅ MongoDB Setup
-MONGO_URI = "mongodb://127.0.0.1:27017"
+MONGO_URI = os.getenv("MONGO_URI")
+print("Mongo URI:", MONGO_URI)  # Debugging line to check the Mongo URI
 mongo_client = MongoClient(MONGO_URI)
 feedback_db = mongo_client["FeedbackDB"]
 feedback_collection = feedback_db["feedbacks"]
@@ -253,5 +254,4 @@ async def delete_product(name: str = Form(...)):
 # ✅ Run server
 if __name__ == "__main__":
     import uvicorn
-    port = int(os.environ.get("PORT", 8080))  # fallback to 8080 locally
-    uvicorn.run(app, host="0.0.0.0", port=port)
+    uvicorn.run(app, host="0.0.0.0", port=8080)
