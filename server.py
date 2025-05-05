@@ -228,29 +228,34 @@ async def delete_category(name: str = Form(...)):
     return {"message": f"Category '{name}' deleted"}
 
 # ✅ Route: Get All Products
+# ✅ Route: Get All Products with Prices
 @app.get("/get_products")
 async def get_products():
-    products = list(product_collection.find({}, {"_id": 0, "name": 1}))
-    return {"products": [prod["name"] for prod in products]}
+    products = list(product_collection.find({}, {"_id": 0, "name": 1, "price": 1}))
+    return {"products": products}
+
 
 # ✅ Route: Add Product
 @app.post("/add_product")
-async def add_product(name: str = Form(...)):
+async def add_product(name: str = Form(...), price: float = Form(...)):
     if not name.strip():
         return {"error": "Product name cannot be empty"}
     exists = product_collection.find_one({"name": name})
     if exists:
         return {"error": "Product already exists"}
-    product_collection.insert_one({"name": name})
-    return {"message": f"Product '{name}' added"}
+    
+    product_collection.insert_one({"name": name, "price": price})
+    return {"message": f"Product '{name}' with price {price} added"}
 
 # ✅ Route: Delete Product
+
 @app.post("/delete_product")
-async def delete_product(name: str = Form(...)):
-    result = product_collection.delete_one({"name": name})
+async def delete_product(name: str = Form(...), price: float = Form(...)):
+    result = product_collection.delete_one({"name": name, "price": price})
     if result.deleted_count == 0:
-        return {"error": "Product not found"}
-    return {"message": f"Product '{name}' deleted"}
+        return {"error": "Product not found or price mismatch"}
+    return {"message": f"Product '{name}' with price {price} deleted"}
+
 
 # ✅ Run server
 if __name__ == "__main__":
