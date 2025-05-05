@@ -202,9 +202,13 @@ const EmotionFeedback = () => {
 
                 <select value={product} onChange={(e) => setProduct(e.target.value)}>
                   <option value="">Select Product</option>
-                  {products.map((prod, i) => <option key={i} value={prod}>{prod}</option>)}
+                  {products.map((prod, i) => <option key={i} value={prod.name}>
+                {prod.name} - ₹{prod.price}
+              </option>)}
                 </select>
               </div>
+
+              
 
               <div className="feedback-box">
                 <textarea

@@ -170,10 +170,14 @@ const VoiceFeedback = () => {
             <select value={product} onChange={(e) => setProduct(e.target.value)} className="dropdown">
               <option value="">Select Product</option>
               {products.map((prod, index) => (
-                <option key={index} value={prod}>{prod}</option>
+                <option key={index} value={prod.name}>
+                {prod.name} - ₹{prod.price}
+              </option>
               ))}
             </select>
           </div>
+
+          
   
           <div className={`mic-button ${recording ? "recording" : ""}`} onClick={recording ? stopRecording : startRecording}>
             🎤

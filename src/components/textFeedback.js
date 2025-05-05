@@ -115,9 +115,9 @@ const TextFeedback = () => {
             >
               <option value="">Select Product</option>
               {products.map((prod, index) => (
-                <option key={index} value={prod}>
-                  {prod}
-                </option>
+                <option key={index} value={prod.name}>
+                {prod.name} - ₹{prod.price}
+              </option>
               ))}
             </select>
   

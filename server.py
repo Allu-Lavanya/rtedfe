@@ -78,7 +78,8 @@ async def get_ai_response(
 async def submit_text_feedback(
     feedback: str = Form(...),
     category: str = Form(...),
-    product: str = Form(...)
+    product: str = Form(...),
+    
 ):
     ai_suggestion = get_ai_suggestion(feedback, category, product)
     sentiment = get_sentiment(feedback)
@@ -87,6 +88,7 @@ async def submit_text_feedback(
         "type": "text",
         "category": category,
         "product": product,
+    
         "content": feedback,
         "sentiment": sentiment,
         "suggestion": ai_suggestion,
@@ -103,6 +105,7 @@ async def submit_text_feedback(
         "message": "Text feedback saved successfully",
         "category": category,
         "product": product,
+        
         "ai_suggestion": ai_suggestion,
         "sentiment": sentiment
     }
@@ -112,7 +115,8 @@ async def submit_text_feedback(
 async def submit_voice_feedback(
     text: str = Form(...),
     category: str = Form(...),
-    product: str = Form(...)
+    product: str = Form(...), 
+    price: str = Form(...)
 ):
     ai_suggestion = get_ai_suggestion(text, category, product)
     sentiment = get_sentiment(text)
@@ -121,6 +125,7 @@ async def submit_voice_feedback(
         "type": "voice",
         "category": category,
         "product": product,
+    
         "content": text,
         "sentiment": sentiment,
         "suggestion": ai_suggestion,
