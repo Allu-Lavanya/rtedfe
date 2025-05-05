@@ -151,7 +151,6 @@ async def submit_emotion_feedback(
     category: str = Form(None),
     product: str = Form(None)
 ):
-    
     feedback_data = {
         "type": "emotion",
         "emotion": emotion,
@@ -230,8 +229,8 @@ async def delete_category(name: str = Form(...)):
 # ✅ Route: Get All Products
 @app.get("/get_products")
 async def get_products():
-    products = list(product_collection.find({}, {"_id": 0, "name": 1}))
-    return {"products": [prod["name"] for prod in products]}
+    products = list(product_collection.find({}, {"_id": 0, "name": 1, "price": 1}))
+    return {"products": products}
 
 # ✅ Route: Add Product
 @app.post("/add_product")
@@ -255,13 +254,4 @@ async def delete_product(name: str = Form(...)):
 # ✅ Run server
 if __name__ == "__main__":
     import uvicorn
-    port = int(os.environ.get("PORT", 10000))  # Render sets this automatically
-    uvicorn.run("server:app", host="0.0.0.0", port=port, reload=False)
-
-@app.get("/")
-def read_root():
-    return {"message": "API is live!"}
-
-@app.head("/")
-async def root_head():
-    return {"message": "This is a HEAD request response"}
+    uvicorn.run(app, host="0.0.0.0", port=8080)
