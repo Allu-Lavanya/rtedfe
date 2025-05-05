@@ -14,7 +14,6 @@ const VoiceFeedback = () => {
   const [product, setProduct] = useState("");
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
-
   const navigate = useNavigate();
   const mediaRecorderRef = useRef(null);
   const audioChunksRef = useRef([]);
