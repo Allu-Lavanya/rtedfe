@@ -177,7 +177,7 @@ code {
   outline: 2px solid #6D4FC2;
 }
 .chat-form .message-input {
-  width: 90%;
+  width: 100%;
   height: 47px;
   border: none;
   outline: none;
