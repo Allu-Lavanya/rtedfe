@@ -25,6 +25,7 @@ You are an expert business consultant helping a retail shop owner improve a spec
 📦 Product: {product}
 🏷️ Category: {category}
 
+
 ✅ Task: Give 2–3 direct and **practical suggestions** for improving the **{product}** based on the above feedback.
 
 🔒 Rules:

@@ -116,7 +116,7 @@ async def submit_voice_feedback(
     text: str = Form(...),
     category: str = Form(...),
     product: str = Form(...), 
-    price: str = Form(...)
+   
 ):
     ai_suggestion = get_ai_suggestion(text, category, product)
     sentiment = get_sentiment(text)
